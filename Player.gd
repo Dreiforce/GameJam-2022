@@ -1,36 +1,33 @@
-extends Area2D
+extends KinematicBody2D
 
-signal hit
+var velocity = Vector2()
 
-export var speed = 400 # How fast the player will move (pixels/sec).
+export var speed = 100 # How fast the player will move (pixels/sec).
 var screen_size
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
 	hide()
+	
+func _physics_process(delta):
+	move()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	var velocity = Vector2.ZERO # The player's movement vector.
-	if Input.is_action_pressed("move_right"):
-		velocity.x += 1
+func move():	
+	velocity = Vector2()
 	if Input.is_action_pressed("move_left"):
-		velocity.x -= 1
+		velocity.x = -speed
+	if Input.is_action_pressed("move_right"):
+		velocity.x = speed
 	if Input.is_action_pressed("move_down"):
-		velocity.y += 1
+		velocity.y = speed
 	if Input.is_action_pressed("move_up"):
-		velocity.y -= 1
-
+		velocity.y = -speed
+		
 	if velocity.length() >= 0:
-		velocity = velocity.normalized() * speed
 		$AnimatedSprite.play()
 	else:
 		$AnimatedSprite.stop()
-	
-	position += velocity * delta
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
 
 	if velocity.x != 0:
 		$AnimatedSprite.animation = "walk"
@@ -41,12 +38,7 @@ func _process(delta):
 #		$AnimatedSprite.animation = "up"
 #		$AnimatedSprite.flip_v = velocity.y > 0
 
-
-func _on_Player_body_entered(body):
-	hide() # Player disappears after being hit.
-	emit_signal("hit")
-	# Must be deferred as we can't change physics properties on a physics callback.
-	$CollisionShape2D.set_deferred("disabled", true)
+	move_and_slide(velocity, Vector2(0, -1))
 
 func start(pos):
 	position = pos
