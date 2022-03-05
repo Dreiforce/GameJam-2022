@@ -1,30 +1,38 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://HUD.gd" type="Script" id=2]
+[ext_resource path="res://fonts/theme.tres" type="Theme" id=4]
 
-[sub_resource type="DynamicFont" id=1]
-size = 32
-font_data = ExtResource( 1 )
+[sub_resource type="InputEventAction" id=4]
+action = "start_game"
 
-[sub_resource type="Theme" id=2]
-default_font = SubResource( 1 )
+[sub_resource type="ShortCut" id=5]
+shortcut = SubResource( 4 )
 
 [sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 1 )
 
+[sub_resource type="StyleBoxTexture" id=8]
+
+[sub_resource type="InputEventAction" id=6]
+action = "pause_game"
+
+[sub_resource type="ShortCut" id=7]
+shortcut = SubResource( 6 )
+
 [node name="HUD" type="CanvasLayer"]
+layer = 2
 script = ExtResource( 2 )
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = SubResource( 2 )
+theme = ExtResource( 4 )
 
 [node name="ScoreLabel" type="Label" parent="Control"]
-margin_left = 20.0
-margin_top = 10.0
-margin_right = 122.0
+margin_left = 7.0
+margin_right = 102.0
 margin_bottom = 39.0
 text = "0"
 
@@ -33,11 +41,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -75.5
-margin_top = -19.5
-margin_right = 75.5
-margin_bottom = 19.5
-text = "Message"
+margin_left = -89.5
+margin_top = -37.5
+margin_right = 89.5
+margin_bottom = 1.5
+text = "Game Title"
+align = 1
+valign = 1
 
 [node name="StartButton" type="Button" parent="Control"]
 anchor_left = 0.5
@@ -48,23 +58,24 @@ margin_left = -47.5
 margin_top = -60.0
 margin_right = 47.5
 margin_bottom = -100.0
+shortcut = SubResource( 5 )
 text = "Start"
 
 [node name="PauseButton" type="Button" parent="Control"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 124.0
-margin_top = -174.0
-margin_right = 154.0
-margin_bottom = -148.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -30.0
+margin_bottom = 26.0
 custom_fonts/font = SubResource( 3 )
+custom_styles/normal = SubResource( 8 )
+shortcut = SubResource( 7 )
 text = "||"
 
 [node name="MessageTimer" type="Timer" parent="."]
 wait_time = 2.0
 
+[connection signal="button_down" from="Control/StartButton" to="." method="_on_StartButton_button_down"]
+[connection signal="focus_entered" from="Control/StartButton" to="." method="_on_StartButton_focus_entered"]
 [connection signal="pressed" from="Control/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="Control/PauseButton" to="." method="_on_PauseButton_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
