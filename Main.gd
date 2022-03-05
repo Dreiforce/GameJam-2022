@@ -5,6 +5,7 @@ var score
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
+	$HUD.show_message("Game Title", false)
 
 func game_over():
 	$ScoreTimer.stop()

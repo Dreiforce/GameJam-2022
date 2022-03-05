@@ -6,10 +6,11 @@ signal start_game
 func _ready():
 	pass # Replace with function body.
 
-func show_message(text):
+func show_message(text, start_timer=true):
 	$Control/Message.text = text
 	$Control/Message.show()
-	$MessageTimer.start()
+	if start_timer:
+		$MessageTimer.start()
 
 func show_game_over():
 	show_message("Game Over")
@@ -31,3 +32,6 @@ func _on_StartButton_pressed():
 
 func _on_MessageTimer_timeout():
 	$Control/Message.hide()
+
+func _on_PauseButton_pressed():
+	get_tree().paused = true
