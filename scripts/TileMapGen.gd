@@ -44,8 +44,8 @@ func main():
 				for y in range(0, chunk_size):
 					set_cell(i * chunk_size + x, j * chunk_size + y, matrix[x][y])
 			update_bitmask_region(
-				Vector2(i * chunk_size - 1,j * chunk_size - 1), 
-				Vector2(i * chunk_size + chunk_size + 1,j * chunk_size + chunk_size + 1)
+				Vector2(i * chunk_size - 2,j * chunk_size - 2), 
+				Vector2(i * chunk_size + chunk_size + 2,j * chunk_size + chunk_size + 2)
 				)
 
 func generate_chunk(cx, cy):
