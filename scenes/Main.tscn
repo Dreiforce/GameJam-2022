@@ -9,7 +9,7 @@
 [ext_resource path="res://scenes/PauseScreen.tscn" type="PackedScene" id=7]
 [ext_resource path="res://art/floor_tiles.png" type="Texture" id=8]
 [ext_resource path="res://scenes/Printer.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/TileMapGen.gd" type="Script" id=10]
+[ext_resource path="res://scripts/TileMapGen.gd" type="Script" id=10]
 
 [sub_resource type="TileSet" id=1]
 0/name = "floor_tiles.png 0"
