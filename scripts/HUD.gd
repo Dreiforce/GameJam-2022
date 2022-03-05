@@ -3,6 +3,10 @@ extends CanvasLayer
 signal start_game
 signal pause_game
 
+export(PackedScene) var progress_bar
+
+var colors = {}
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Control/PauseButton.hide()
@@ -29,6 +33,18 @@ func show_main_menu():
 
 func update_score(score):
 	$Control/ScoreLabel.text = str(score)
+	
+func update_printer(inventory):
+	for item in inventory:
+		if !colors.has(item):
+			var color_bar = progress_bar.instance()
+			colors[item] = color_bar
+			$ProgressBars.add_child(color_bar)
+			color_bar.update_ProgressBar(inventory[item] * 20)
+			color_bar.start_timer()
+		else:
+			colors[item].add_ProgressBar(inventory[item] * 20)
+	print(colors)
 
 func _on_StartButton_pressed():
 	$Control/StartButton.hide()

@@ -18,7 +18,6 @@ func new_game():
 	$StartTimer.start()
 	$HUD._on_MessageTimer_timeout()
 	$HUD/Control/PauseButton.show()
-	$HUD/CartridgeControl/CartridgeTimer.start()
 	
 func _on_ScoreTimer_timeout():
 	score += 1
@@ -52,10 +51,5 @@ func _on_Cartridge_collect(item):
 	print("Inventory:", inventory)
 
 func _on_Printer_fill():
-	for item in inventory:
-		if printer.has(item):
-			printer[item] += inventory[item]
-		else:
-			printer[item] = inventory[item]
-		inventory.erase(item)
-	print("Printer:", printer)
+	$HUD.update_printer(inventory)
+	inventory.clear()

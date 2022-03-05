@@ -6,13 +6,11 @@
 [ext_resource path="res://art/progress_bar/progress.png" type="Texture" id=4]
 
 [node name="CartridgeControl" type="Control"]
-margin_right = 40.0
-margin_bottom = 40.0
 script = ExtResource( 2 )
 
 [node name="CartridgeProgressBar" type="TextureProgress" parent="."]
 margin_left = 13.0
-margin_right = 74.0
+margin_right = 31.0
 margin_bottom = 16.0
 value = 100.0
 texture_under = ExtResource( 3 )
