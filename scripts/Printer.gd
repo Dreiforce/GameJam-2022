@@ -1,4 +1,4 @@
-extends Area2D
+extends StaticBody2D
 
 signal fill
 
@@ -6,5 +6,5 @@ signal fill
 func _ready():
 	pass
 
-func _on_Printer_body_entered(body):
+func _on_Area2D_body_entered(body):
 	emit_signal("fill")

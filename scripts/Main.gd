@@ -19,7 +19,7 @@ func new_game():
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 	$HUD._on_MessageTimer_timeout()
-	$HUD/Control/PauseButton.show()
+	$HUD.start_game()
 	initialize_printer()	
 	
 func initialize_printer():

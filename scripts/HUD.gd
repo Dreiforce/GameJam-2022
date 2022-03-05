@@ -13,6 +13,7 @@ var inventory_list = {}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Control/PauseButton.hide()
+	$Control/ScoreLabel.hide()
 	$ProgressBars.add_constant_override("separation", 17)
 	$Inventory.add_constant_override("separation", 20)
 
@@ -74,3 +75,7 @@ func _on_MessageTimer_timeout():
 func _on_PauseButton_pressed():
 	$Control/PauseButton.hide()
 	emit_signal("pause_game")
+
+func start_game():
+	$Control/PauseButton.show()
+	$Control/ScoreLabel.show()
