@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/walk_up_2.png-457897f91335c920e4c19b8c8613e52a.stex"
+path="res://.import/walk_up_2.png-a62717db89d45f62729dc94c85272f61.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/baxter/walk_up_2.png"
-dest_files=[ "res://.import/walk_up_2.png-457897f91335c920e4c19b8c8613e52a.stex" ]
+source_file="res://art/player_baxter/walk_up_2.png"
+dest_files=[ "res://.import/walk_up_2.png-a62717db89d45f62729dc94c85272f61.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sprite_1.png-4f31125993faaf0693c0b5e2f8895c5d.stex"
+path="res://.import/sprite_1.png-24d0c21634497c03d26ffc7fb50832fd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/baxter/sprite_1.png"
-dest_files=[ "res://.import/sprite_1.png-4f31125993faaf0693c0b5e2f8895c5d.stex" ]
+source_file="res://art/player_baxter/sprite_1.png"
+dest_files=[ "res://.import/sprite_1.png-24d0c21634497c03d26ffc7fb50832fd.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

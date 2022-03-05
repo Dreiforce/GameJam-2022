@@ -30,13 +30,15 @@ func move():
 		$AnimatedSprite.stop()
 
 	if velocity.x != 0:
-		$AnimatedSprite.animation = "walk"
+		$AnimatedSprite.animation = "side"
 		$AnimatedSprite.flip_v = false
-		# See the note below about boolean assignment.
 		$AnimatedSprite.flip_h = velocity.x < 0
-#	elif velocity.y != 0:
-#		$AnimatedSprite.animation = "up"
-#		$AnimatedSprite.flip_v = velocity.y > 0
+	elif velocity.y > 0:
+		$AnimatedSprite.animation = "down"
+	elif velocity.y < 0:
+		$AnimatedSprite.animation = "up"
+	else:
+		$AnimatedSprite.animation = "idle"
 
 	move_and_slide(velocity, Vector2(0, -1))
 
