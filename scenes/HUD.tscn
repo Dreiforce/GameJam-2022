@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://HUD.gd" type="Script" id=2]
+[ext_resource path="res://scenes/CartridgeProgress.tscn" type="PackedScene" id=3]
 [ext_resource path="res://fonts/theme.tres" type="Theme" id=4]
 
 [sub_resource type="InputEventAction" id=4]
@@ -116,6 +117,13 @@ valign = 1
 
 [node name="MessageTimer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="CartridgeControl" parent="." instance=ExtResource( 3 )]
+margin_left = 231.0
+margin_top = 147.0
+margin_right = 281.0
+margin_bottom = 162.0
+rect_scale = Vector2( 3, 3 )
 
 [connection signal="pressed" from="Control/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="Control/PauseButton" to="." method="_on_PauseButton_pressed"]

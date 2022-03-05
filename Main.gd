@@ -17,7 +17,8 @@ func new_game():
 	$StartTimer.start()
 	$HUD._on_MessageTimer_timeout()
 	$HUD/Control/PauseButton.show()
-
+	$HUD/CartridgeControl/CartridgeTimer.start()
+	
 func _on_ScoreTimer_timeout():
 	score += 1
 	$HUD.update_score(score)
