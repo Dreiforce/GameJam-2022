@@ -2,6 +2,7 @@ extends Node
 
 var score
 const inventory = {}
+const printer = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -48,4 +49,13 @@ func _on_Cartridge_collect(item):
 		inventory[item.itemType] += 1
 	else:
 		inventory[item.itemType] = 1
-	print(inventory)
+	print("Inventory:", inventory)
+
+func _on_Printer_fill():
+	for item in inventory:
+		if printer.has(item):
+			printer[item] += inventory[item]
+		else:
+			printer[item] = inventory[item]
+		inventory.erase(item)
+	print("Printer:", printer)
