@@ -1,8 +1,8 @@
 extends Node
 
 var score
-const inventory = {}
-const printer = {}
+var inventory = {}
+var printer = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,9 +18,16 @@ func new_game():
 	$StartTimer.start()
 	$HUD._on_MessageTimer_timeout()
 	$HUD/Control/PauseButton.show()
+	initialize_printer()	
 	
+func initialize_printer():
+	inventory[0] = 5
+	_on_Printer_fill()
+
 func _on_ScoreTimer_timeout():
-	score += 1
+	for item in printer:
+		if printer[item].get_ProgressBar_value() > 0:
+			score += 1
 	$HUD.update_score(score)
 
 func _on_StartTimer_timeout():
@@ -48,8 +55,11 @@ func _on_Cartridge_collect(item):
 		inventory[item.itemType] += 1
 	else:
 		inventory[item.itemType] = 1
+	$HUD.update_inventory(inventory)
 	print("Inventory:", inventory)
 
 func _on_Printer_fill():
-	$HUD.update_printer(inventory)
-	inventory.clear()
+	printer = $HUD.update_printer(inventory)
+	for item in inventory:
+		inventory[item] = 0
+	$HUD.update_inventory(inventory)

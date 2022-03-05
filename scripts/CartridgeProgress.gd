@@ -12,6 +12,9 @@ func add_ProgressBar(value):
 
 func update_ProgressBar(value):
 	$CartridgeProgressBar.value = value
+	
+func get_ProgressBar_value():
+	return $CartridgeProgressBar.value
 
 func start_timer():
 	$CartridgeTimer.start()
