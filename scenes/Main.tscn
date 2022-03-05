@@ -35,9 +35,22 @@ position = Vector2( 70, 158 )
 [node name="CollisionBox" parent="." instance=ExtResource( 5 )]
 position = Vector2( 50, 119 )
 
+[node name="Cartridge2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 19, 104 )
+
+[node name="Cartridge3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 36, 146 )
+
+[node name="Cartridge4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 13, 131 )
+
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
 [connection signal="pause_game" from="HUD" to="." method="_on_HUD_pause_game"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="exit_game" from="PauseScreen" to="." method="_on_PauseScreen_exit_game"]
 [connection signal="resume_game" from="PauseScreen" to="." method="_on_PauseScreen_resume_game"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="collect" from="Cartridge" to="." method="_on_Cartridge_collect"]
+[connection signal="collect" from="Cartridge2" to="." method="_on_Cartridge_collect"]
+[connection signal="collect" from="Cartridge3" to="." method="_on_Cartridge_collect"]
+[connection signal="collect" from="Cartridge4" to="." method="_on_Cartridge_collect"]

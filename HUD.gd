@@ -31,7 +31,6 @@ func update_score(score):
 	$Control/ScoreLabel.text = str(score)
 
 func _on_StartButton_pressed():
-	print("pressed")
 	$Control/StartButton.hide()
 	emit_signal("start_game")
 
@@ -41,9 +40,3 @@ func _on_MessageTimer_timeout():
 func _on_PauseButton_pressed():
 	$Control/PauseButton.hide()
 	emit_signal("pause_game")
-
-func _on_StartButton_focus_entered():
-	print("focus")
-
-func _on_StartButton_button_down():
-	print("down")

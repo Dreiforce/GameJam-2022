@@ -1,6 +1,7 @@
 extends Node
 
 var score
+const inventory = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -40,3 +41,10 @@ func _on_PauseScreen_exit_game():
 func reset_score():
 	score = 0
 	$HUD.update_score(score)
+
+func _on_Cartridge_collect(item):
+	if inventory.has(item.itemType):
+		inventory[item.itemType] += 1
+	else:
+		inventory[item.itemType] = 1
+	print(inventory)
