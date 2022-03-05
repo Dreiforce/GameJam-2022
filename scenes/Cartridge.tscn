@@ -13,7 +13,6 @@ __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
-itemIcon = "res://icon.png"
 
 [node name="Sprite" type="Sprite" parent="."]
 

@@ -15,3 +15,17 @@ func update_ProgressBar(value):
 
 func start_timer():
 	$CartridgeTimer.start()
+
+func set_progress(itemType):
+	var texture
+	match itemType:
+		0:
+			texture = load("res://art/progress_bar/Cartridges/progress_black.png")
+		1:
+			texture = load("res://art/progress_bar/Cartridges/progress_red.png")
+		2:
+			texture = load("res://art/progress_bar/Cartridges/progress_black.png")
+		3:
+			texture = load("res://art/progress_bar/Cartridges/progress_blue.png")
+			
+	$CartridgeProgressBar.set_progress_texture(texture)

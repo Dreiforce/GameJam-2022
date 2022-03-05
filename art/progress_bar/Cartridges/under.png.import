@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/progress.png-597fe91d46ad80903291ca8741a52e83.stex"
+path="res://.import/under.png-aca66de8b5a8d1cdb3b9e1d2b49d3851.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/progress_bar/old/progress.png"
-dest_files=[ "res://.import/progress.png-597fe91d46ad80903291ca8741a52e83.stex" ]
+source_file="res://art/progress_bar/Cartridges/under.png"
+dest_files=[ "res://.import/under.png-aca66de8b5a8d1cdb3b9e1d2b49d3851.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

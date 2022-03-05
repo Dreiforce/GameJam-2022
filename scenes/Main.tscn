@@ -114,9 +114,6 @@ position = Vector2( 161, 109 )
 wait_time = 0.001
 one_shot = true
 
-[node name="Cartridge" parent="." instance=ExtResource( 1 )]
-position = Vector2( 19, 162 )
-
 [node name="Background" parent="." instance=ExtResource( 2 )]
 position = Vector2( 70, 158 )
 
@@ -134,14 +131,17 @@ script = ExtResource( 10 )
 
 [node name="Cartridge2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 19, 104 )
+z_index = 1
 itemType = 1
 
 [node name="Cartridge3" parent="." instance=ExtResource( 1 )]
 position = Vector2( 36, 146 )
-itemType = 2
+z_index = 1
+itemType = 3
 
 [node name="Cartridge4" parent="." instance=ExtResource( 1 )]
 position = Vector2( 13, 131 )
+z_index = 1
 
 [node name="Printer" parent="." instance=ExtResource( 9 )]
 position = Vector2( 25, 69 )
@@ -152,7 +152,6 @@ position = Vector2( 25, 69 )
 [connection signal="exit_game" from="PauseScreen" to="." method="_on_PauseScreen_exit_game"]
 [connection signal="resume_game" from="PauseScreen" to="." method="_on_PauseScreen_resume_game"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
-[connection signal="collect" from="Cartridge" to="." method="_on_Cartridge_collect"]
 [connection signal="collect" from="Cartridge2" to="." method="_on_Cartridge_collect"]
 [connection signal="collect" from="Cartridge3" to="." method="_on_Cartridge_collect"]
 [connection signal="collect" from="Cartridge4" to="." method="_on_Cartridge_collect"]

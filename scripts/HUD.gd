@@ -10,6 +10,7 @@ var colors = {}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Control/PauseButton.hide()
+	$ProgressBars.add_constant_override("separation", 17) 
 
 func show_message(text, start_timer=true):
 	$Control/Message.text = text
@@ -40,10 +41,11 @@ func update_printer(inventory):
 			var color_bar = progress_bar.instance()
 			colors[item] = color_bar
 			$ProgressBars.add_child(color_bar)
-			color_bar.update_ProgressBar(inventory[item] * 20)
+			color_bar.set_progress(item)
+			color_bar.update_ProgressBar(inventory[item] * 50)
 			color_bar.start_timer()
 		else:
-			colors[item].add_ProgressBar(inventory[item] * 20)
+			colors[item].add_ProgressBar(inventory[item] * 50)
 	print(colors)
 
 func _on_StartButton_pressed():
