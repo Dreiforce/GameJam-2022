@@ -27,7 +27,7 @@ func _ready():
 ##### INSERT GENERATOR HERE
 
 var seed_value = 100
-var chunk_size = 32
+var chunk_size = 16
 var WALL = 0
 var FLOOR = 1
 var EMPTY = 2
@@ -67,10 +67,34 @@ func generate_home_chunk():
 	generate_room_walls(result)
 	return result
 
+
 func generate_normal_chunk(cx,cy):
 	var result = generate_matrix(FLOOR)
 	generate_room_walls(result)
+
+	var type = rng.randi_range(0,2)
+
+	if(type == 1):
+		result = generate_type_1(result)
+
+
+
 	return result;
+
+func generate_type_1(result):
+
+	var x = rng.randi_range(2, chunk_size/2);
+	var xx = rng.randi_range(x+3, chunk_size-4)
+	var y = rng.randi_range(2, chunk_size/2);
+	var yy = rng.randi_range(x+3, chunk_size-4)
+
+	for i in range(x, xx):
+		for j in range(y,yy):
+			result[i][j] = WALL
+
+
+	return result;
+
 
 func generate_room_walls(result):
 
