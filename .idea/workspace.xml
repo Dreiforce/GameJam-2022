@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b3ad016a-11f1-4485-89ec-6631885a3cfc" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/art/progress_bar/Cartridges/cartridge_black.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/art/progress_bar/Cartridges/cartridge_black.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/art/progress_bar/Cartridges/cartridge_blue.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/art/progress_bar/Cartridges/cartridge_blue.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/art/progress_bar/Cartridges/cartridge_red.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/art/progress_bar/Cartridges/cartridge_red.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/art/progress_bar/Cartridges/progress_black.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/art/progress_bar/Cartridges/progress_black.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/art/progress_bar/Cartridges/progress_blue.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/art/progress_bar/Cartridges/progress_blue.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/art/progress_bar/Cartridges/progress_red.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/art/progress_bar/Cartridges/progress_red.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/art/progress_bar/Cartridges/under.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/art/progress_bar/Cartridges/under.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/art/progress_bar/old/progress.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/art/progress_bar/old/progress.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/art/progress_bar/old/under.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/art/progress_bar/old/under.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/TileMapGen.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/TileMapGen.gd" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="ProjectId" id="25yFyP8zL6iWHkxbHpJ73yIXaLL" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.formatter.settings.were.checked" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b3ad016a-11f1-4485-89ec-6631885a3cfc" name="Changes" comment="" />
+      <created>1646491678804</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1646491678804</updated>
+      <workItem from="1646491678807" duration="45000" />
+    </task>
+    <servers />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+</project>
