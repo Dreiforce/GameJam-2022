@@ -2,6 +2,7 @@ extends CanvasLayer
 
 signal start_game
 signal pause_game
+signal game_over
 
 export(PackedScene) var progress_bar
 export(PackedScene) var inventory_item
@@ -30,7 +31,7 @@ func show_game_over():
 	$Control/Message.show()
 	# Make a one-shot timer and wait for it to finish.
 	yield(get_tree().create_timer(1), "timeout")
-	show_main_menu()
+	emit_signal("game_over")
 	
 func show_main_menu():
 	$Control/StartButton.show()

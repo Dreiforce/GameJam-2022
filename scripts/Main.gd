@@ -6,13 +6,15 @@ var printer = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	get_tree().paused = true
+	$Player.start($StartPosition.position)
 
 func game_over():
 	$ScoreTimer.stop()
 	$HUD.show_game_over()
 
 func new_game():
+	get_tree().paused = false
 	reset_score()
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
@@ -21,13 +23,19 @@ func new_game():
 	initialize_printer()	
 	
 func initialize_printer():
-	inventory[0] = 5
+	inventory[0] = 1
 	_on_Printer_fill()
 
 func _on_ScoreTimer_timeout():
+	var points = 0
 	for item in printer:
 		if printer[item].get_ProgressBar_value() > 0:
-			score += 1
+			points += 1
+	
+	if points <= 0:
+		game_over()
+			
+	score += points
 	$HUD.update_score(score)
 
 func _on_StartTimer_timeout():
@@ -62,4 +70,8 @@ func _on_Printer_fill():
 	printer = $HUD.update_printer(inventory)
 	for item in inventory:
 		inventory[item] = 0
+		
 	$HUD.update_inventory(inventory)
+
+func _on_HUD_game_over():
+	get_tree().reload_current_scene()
