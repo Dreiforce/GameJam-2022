@@ -12,9 +12,9 @@ func _ready():
 	hide()
 	
 func _physics_process(delta):
-	move()
+	move(delta)
 
-func move():	
+func move(delta):	
 	if not touching_on:
 		velocity = Vector2()
 	
@@ -45,11 +45,7 @@ func move():
 	if(velocity.x != 0 or velocity.y != 0):
 		$Light2D.rotation = atan2(velocity.y, velocity.x)
 	
-	
-	
-	
-
-	move_and_slide(velocity, Vector2(0, -1))
+	move_and_slide(velocity * delta * 60, Vector2(0, -1))
 
 func start(pos):
 	position = pos
