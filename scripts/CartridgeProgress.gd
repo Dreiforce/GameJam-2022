@@ -1,11 +1,18 @@
 extends Control
 
+signal remove_color
+
+var itemType
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 func _on_CartridgeTimer_timeout():
 	$CartridgeProgressBar.value -= 1
+	if $CartridgeProgressBar.value <= 0:
+		queue_free()
+		emit_signal("remove_color", itemType)
 
 func add_ProgressBar(value):
 	$CartridgeProgressBar.value += value
@@ -22,7 +29,8 @@ func get_ProgressBar_max_value():
 func start_timer():
 	$CartridgeTimer.start()
 
-func set_texture(itemType):
+func set_texture(item):
+	itemType = item
 	var texture
 	match itemType:
 		0:

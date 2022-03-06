@@ -4,6 +4,7 @@ export(PackedScene) var cartridge
 export var cartridges = 100
 export var cartridge_multiplier = 10
 var score
+
 var inventory = {}
 var printer = {}
 var rng = RandomNumberGenerator.new()
@@ -37,16 +38,16 @@ func initialize_printer():
 	$Printer/AnimatedSprite.play()
 
 func _on_ScoreTimer_timeout():
-	var points = 0
-	for item in printer:
-		if printer[item].get_ProgressBar_value() > 0:
-			points += 1
+	var score_points = []
+	for itemType in printer:
+		if printer[itemType].get_ProgressBar_value() > 0:
+			score_points.append(itemType)
 	
-	if points <= 0:
+	if score_points.size() == 0:
 		game_over()
 			
-	score += points
-	$HUD.update_score(score)
+	score += score_points.size()
+	$HUD.update_score(score, score_points)
 
 func _on_StartTimer_timeout():
 	$ScoreTimer.start()
@@ -66,7 +67,7 @@ func _on_PauseScreen_exit_game():
 
 func reset_score():
 	score = 0
-	$HUD.update_score(score)
+	$HUD.update_score(score, [])
 
 func _on_Cartridge_collect(item):	
 	if !inventory.has(item.itemType):
@@ -79,10 +80,14 @@ func _on_Printer_fill():
 	for itemType in inventory:
 		if !printer.has(itemType):
 			printer[itemType] = $HUD.add_printer_color(itemType)
+			printer[itemType].connect("remove_color", self, "_on_ProgressBar_done")
 			printer[itemType].update_ProgressBar(0)
 			printer[itemType].start_timer()
 			
 		fill_printer(inventory, itemType, printer[itemType])
+
+func _on_ProgressBar_done(itemType):
+	printer.erase(itemType)
 
 func fill_printer(inventory, item, color_bar):
 	var current_progress = color_bar.get_ProgressBar_value()

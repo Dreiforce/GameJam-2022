@@ -6,6 +6,7 @@ signal game_over
 
 export(PackedScene) var progress_bar
 export(PackedScene) var inventory_item
+export(PackedScene) var score_point
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,6 +14,7 @@ func _ready():
 	$Control/ScoreLabel.hide()
 	$ProgressBars.add_constant_override("separation", 17)
 	$Inventory.add_constant_override("separation", 20)
+	$ColorLabel.add_constant_override("separation", 17)
 
 func show_message(text, start_timer=true):
 	$Control/Message.text = text
@@ -33,9 +35,23 @@ func show_game_over():
 	
 func show_main_menu():
 	$Control/StartButton.show()
+	
+func add_score_point(itemType):
+	var point = score_point.instance()
+	point.set_color(itemType)
+	$ColorLabel.add_child(point)
+	return point
 
-func update_score(score):
+func update_score(score, points):
 	$Control/ScoreLabel.text = str(score)
+	delete_children($ColorLabel)
+	for itemType in points:
+		add_score_point(itemType)
+	
+func delete_children(node):
+	for n in node.get_children():
+		node.remove_child(n)
+		n.queue_free()
 	
 func add_inventory_color(itemType):
 	var inv_item = inventory_item.instance()
