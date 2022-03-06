@@ -40,6 +40,7 @@ margin_left = -73.0
 margin_top = -109.0
 margin_right = 73.0
 margin_bottom = -64.0
+shortcut_in_tooltip = false
 shortcut = SubResource( 2 )
 text = "Resume"
 
@@ -52,6 +53,7 @@ margin_left = -73.0
 margin_top = -58.0
 margin_right = 73.0
 margin_bottom = -13.0
+shortcut_in_tooltip = false
 text = "Exit"
 
 [connection signal="pressed" from="Popup/ResumeButton" to="." method="_on_ResumeButton_pressed"]
