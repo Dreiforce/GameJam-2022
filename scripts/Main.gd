@@ -15,6 +15,8 @@ func _ready():
 	get_tree().paused = true
 	$Player.start($StartPosition.position)
 
+	$MenuPausePlayer.play()
+	
 func game_over():
 	$ScoreTimer.stop()
 	$HUD.show_game_over()
@@ -28,6 +30,9 @@ func new_game():
 	$HUD.start_game()
 	generate_cartridges()
 	initialize_printer()
+	
+	$MenuPausePlayer.stop()
+	$MainSoundPlayer.play()
 	
 func initialize_printer():
 	var inv_item = $HUD.add_inventory_color(0)
@@ -54,12 +59,18 @@ func _on_StartTimer_timeout():
 func _on_HUD_pause_game():
 	get_tree().paused = true
 	$PauseScreen/Popup.show()
+	
+	$MainSoundPlayer.stop()
+	$MenuPausePlayer.play()
 
 func _on_PauseScreen_resume_game():
 	get_tree().paused = false
 	$PauseScreen/Popup.hide()
 	$HUD/Control/PauseButton.show()
-
+	
+	$MenuPausePlayer.stop()
+	$MainSoundPlayer.play()
+	
 func _on_PauseScreen_exit_game():
 	get_tree().paused = false
 	get_tree().reload_current_scene()
