@@ -167,6 +167,7 @@ margin_right = 265.0
 margin_bottom = 103.0
 theme = ExtResource( 4 )
 custom_fonts/font = SubResource( 10 )
+text = "Player1"
 max_length = 7
 expand_to_text_length = true
 placeholder_text = "Player 1"
