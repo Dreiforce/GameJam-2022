@@ -103,6 +103,7 @@ func fill_printer(inventory, item, color_bar):
 func _on_HUD_game_over():
 	get_tree().reload_current_scene()
 
+# [TODO] Rarity and respawn
 func generate_cartridges():
 	for i in range(cartridges):
 		var item = cartridge.instance()
