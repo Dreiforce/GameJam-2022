@@ -879,6 +879,9 @@ position = Vector2( 167, 70 )
 position = Vector2( 88, 136 )
 texture = ExtResource( 5 )
 
+[node name="CartridgeSpawnTimer" type="Timer" parent="."]
+wait_time = 8.0
+
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
 [connection signal="game_over" from="HUD" to="." method="_on_HUD_game_over"]
 [connection signal="pause_game" from="HUD" to="." method="_on_HUD_pause_game"]
@@ -887,3 +890,4 @@ texture = ExtResource( 5 )
 [connection signal="resume_game" from="PauseScreen" to="." method="_on_PauseScreen_resume_game"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
 [connection signal="fill" from="Printer" to="." method="_on_Printer_fill"]
+[connection signal="timeout" from="CartridgeSpawnTimer" to="." method="_on_CartridgeSpawnTimer_timeout"]

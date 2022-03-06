@@ -3,11 +3,14 @@ extends Node
 export(PackedScene) var cartridge
 export var cartridges = 100
 export var cartridge_multiplier = 10
+export var cartridge_spawn_retries = 5
 var score
 
 var inventory = {}
 var printer = {}
 var rng = RandomNumberGenerator.new()
+var cartridge_list = []
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,16 +18,17 @@ func _ready():
 	get_tree().paused = true
 	$Player.start($StartPosition.position)
 	$Printer/AnimatedSprite.play()
-
 	$MenuPausePlayer.play()
-	
+
 func game_over():
 	$ScoreTimer.stop()
+	$CartridgeSpawnTimer.stop()
 	$HUD.show_game_over()
 
 func new_game():
 	get_tree().paused = false
 	reset_score()
+	cartridge_list.clear()
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 	$HUD.show_message("Fill the printer with ink")
@@ -32,6 +36,7 @@ func new_game():
 	generate_cartridges()
 	initialize_printer()
 	add_objects_tp_scene()
+	$CartridgeSpawnTimer.start()
 	
 	$MenuPausePlayer.stop()
 	$MainSoundPlayer.play()
@@ -85,6 +90,8 @@ func _on_Cartridge_collect(item):
 		var inv_item = $HUD.add_inventory_color(item.itemType)
 		inventory[item.itemType] = inv_item
 	
+	cartridge_list.erase(item)
+	
 	inventory[item.itemType].update_count(1)
 
 func _on_Printer_fill():
@@ -115,29 +122,56 @@ func fill_printer(inventory, item, color_bar):
 func _on_HUD_game_over():
 	get_tree().reload_current_scene()
 
+func _on_CartridgeSpawnTimer_timeout():
+	for i in range(cartridge_spawn_retries):
+		if(generate_one_cartridge()):
+			break
+
 # [TODO] Rarity and respawn
 func generate_cartridges():
 	for i in range(cartridges):
-		var item = cartridge.instance()
-		item.connect("collect", self, "_on_Cartridge_collect")
-		item.itemType = rng.randi_range(0, 2)
-		var size = $TileMap.tile_size * $TileMap.world_size * $TileMap.chunk_size
-		var x = rng.randi_range(10, size)
-		var y = rng.randi_range(10, size)
-		
-		if check_surroundings(x, y):
-			item.position = Vector2(x, y)
-			add_child(item)
-		else:
-			cartridges += 1
+		generate_one_cartridge()
+
+
+func generate_one_cartridge():
+	var item = cartridge.instance()
+	item.connect("collect", self, "_on_Cartridge_collect")
+	
+	var size = $TileMap.tile_size * $TileMap.world_size * $TileMap.chunk_size
+	var x = rng.randi_range(10, size)
+	var y = rng.randi_range(10, size)
+	
+	var abstand_home_in_percent = Vector2(x,y).length() / Vector2(size,size).length() 
+	var rarity = int(clamp(abstand_home_in_percent * 3, 0, 2))
+	item.itemType = rng.randi_range(0, rarity)
+	
+	if check_surroundings(x, y):
+		item.position = Vector2(x, y)
+		add_child(item)
+		cartridge_list.append(item)
+		print("created cartridge at " + str(x) +  " " + str(y) 
+			+ " with dist% " + str(abstand_home_in_percent) 
+			+ " with rarity " + str(rarity) 
+			+ "and now have " + str(cartridge_list.size()) + " on the map"
+		)
+		return true
+	return false
+
 
 func check_surroundings(x, y):
+	#if on wall
 	for i in range(-10, 10):
 		for j in range(-15, 15):
 			var coordinates = $TileMap.world_to_map(Vector2(x+i, y+j))
 			var tile_index = $TileMap.get_cell(coordinates.x, coordinates.y)
 			if tile_index != 1 or $StartPosition.position == coordinates:
 				return false
+	
+	#if already card near here
+	for cart in cartridge_list:
+		if(Vector2(x,y).distance_squared_to(cart.position) < pow(16 * 5, 2)): # 5 tiles x 16 pixel squared
+			return false;
+	
 	return true
 
 
@@ -159,4 +193,3 @@ func add_objects_tp_scene():
 						y * $TileMap.tile_size
 					)
 					add_child_below_node($ingame_objects,table)
-	
