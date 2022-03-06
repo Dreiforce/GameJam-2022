@@ -31,7 +31,7 @@ var chunk_size = 16
 var world_size = 5
 var WALL = 0
 var FLOOR = 1
-var EMPTY = 2
+var SHELF = 2
 
 
 func main():
@@ -73,12 +73,22 @@ func generate_normal_chunk(cx,cy):
 	var result = generate_matrix(FLOOR)
 	generate_room_walls(result)
 
-	var type = rng.randi_range(0,2)
+	var type = rng.randi_range(0,3)
 
 	if(type == 1):
 		result = generate_type_1(result)
+	if(type == 2):
+		result = generate_type_2(result)
 
 	return result;
+
+func generate_type_2(result):
+
+	for i in range(3, chunk_size-4, 3):
+		for j in range(3, chunk_size-4):
+			result[j][i] = SHELF
+
+	return result
 
 func generate_type_1(result):
 
