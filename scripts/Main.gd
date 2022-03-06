@@ -28,8 +28,6 @@ func game_over():
 	$ScoreTimer.stop()
 	$CartridgeSpawnTimer.stop()
 	$HUD.show_game_over()
-	append_score(score)
-	print("scores: " + str(scores))
 
 func new_game():
 	get_tree().paused = false
@@ -133,7 +131,8 @@ func fill_printer(inventory, item, color_bar):
 		color_bar.update_ProgressBar(current_progress + difference)
 		inventory[item].update_count(-difference / cartridge_multiplier)
 
-func _on_HUD_game_over():
+func _on_HUD_game_over(name):
+	append_score(score, name)
 	get_tree().reload_current_scene()
 
 func _on_CartridgeSpawnTimer_timeout():
@@ -188,7 +187,6 @@ func check_surroundings(x, y):
 	
 	return true
 
-
 func save_score(scores):
 	var save_game = File.new()
 	save_game.open("user://savegame.save", File.WRITE)
@@ -197,7 +195,7 @@ func save_score(scores):
 func load_score():
 	var save_game = File.new()
 	if not save_game.file_exists("user://savegame.save"):
-		return [0,0,0] # init
+		return [{"name":"empty", "score":0}, {"name":"empty", "score":0}, {"name":"empty", "score":0}] # init
 	save_game.open("user://savegame.save", File.READ)
 	var node_data = parse_json(save_game.get_line())
 	save_game.close()
@@ -206,12 +204,12 @@ func load_score():
 	return node_data
 
 func sort_descending(a, b):
-	if a > b:
+	if a.score > b.score:
 		return true
 	return false
 
-func append_score(score):
-	scores.append(score)
+func append_score(score, name):
+	scores.append({"name":name, "score":score})
 	scores.sort_custom(self, "sort_descending")
 	while(scores.size() > 3):
 		scores.remove(3)
