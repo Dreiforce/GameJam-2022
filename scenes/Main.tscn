@@ -4,7 +4,6 @@
 [ext_resource path="res://art/lightmap.png" type="Texture" id=2]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/CollisionBox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scripts/Main.gd" type="Script" id=6]
 [ext_resource path="res://scenes/PauseScreen.tscn" type="PackedScene" id=7]
 [ext_resource path="res://art/floor_tiles.png" type="Texture" id=8]
@@ -860,19 +859,10 @@ pause_mode = 2
 position = Vector2( 67, 30 )
 scale = Vector2( 2.5, 2.5 )
 
-[node name="CollisionBox2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 41, 106 )
-z_index = 1
-
-[node name="CollisionBox" parent="." instance=ExtResource( 5 )]
-position = Vector2( 263, 54 )
-z_index = 1
-
 [node name="CollisionBox-3" parent="." instance=ExtResource( 11 )]
 position = Vector2( 167, 70 )
 
-[node name="CollisionBox-2" parent="." instance=ExtResource( 11 )]
-position = Vector2( 252, 126 )
+[node name="ingame_objects" type="Node" parent="."]
 
 [node name="MenuPausePlayer" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
