@@ -26,8 +26,8 @@ func _ready():
 
 ##### INSERT GENERATOR HERE
 
-var tile_size = 16
 var seed_value = 100
+var tile_size = 16
 var chunk_size = 16
 var world_size = 10
 var WALL = 0
@@ -40,8 +40,8 @@ func main():
 
 	generate_chunk(1,0)
 
-	for i in range(-1, world_size):
-		for j in range(-1, world_size):
+	for i in range(-1, world_size+2):
+		for j in range(-1, world_size+2):
 			var matrix = generate_chunk(i,j)
 
 			for x in range(0, chunk_size):
@@ -54,8 +54,7 @@ func main():
 
 func generate_chunk(cx, cy):
 	rng.set_seed(seed_value ^ (cy * 123 + cx))
-
-	if(cx < 0 or cy < 0):
+	if(cx < 0 or cy < 0 or cx > world_size or cy > world_size):
 		return generate_wall_chunk()
 	if(cx == 0 and cy == 0):
 		return generate_home_chunk()
