@@ -33,6 +33,7 @@ var world_size = 5
 var WALL = 0
 var FLOOR = 1
 var SHELF = 2
+var DECO = 3
 
 
 func main():
@@ -81,6 +82,20 @@ func generate_normal_chunk(cx,cy):
 	if(type == 2):
 		result = generate_type_2(result)
 
+
+	result = gen_random_deco(result)
+	result = gen_random_deco(result)
+
+	return result;
+
+
+func gen_random_deco(result):
+
+	var x = rng.randi_range(0, chunk_size-1)
+	var y = rng.randi_range(0, chunk_size-1)
+
+	if(result[x][y] == FLOOR):
+		result[x][y] = DECO
 	return result;
 
 func generate_type_2(result):
