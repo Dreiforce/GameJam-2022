@@ -27,7 +27,7 @@ func new_game():
 	reset_score()
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
-	$HUD._on_MessageTimer_timeout()
+	$HUD.show_message("Fill the printer with ink")
 	$HUD.start_game()
 	generate_cartridges()
 	initialize_printer()
