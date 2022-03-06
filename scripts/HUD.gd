@@ -15,7 +15,7 @@ func _ready():
 	$ProgressBars.add_constant_override("separation", 17)
 	$Inventory.add_constant_override("separation", 20)
 	$ColorLabel.add_constant_override("separation", 17)
-
+	
 func show_message(text, start_timer=true):
 	$Control/Message.text = text
 	$Control/Message.show()

@@ -18,6 +18,9 @@ func add_ProgressBar(value):
 	$CartridgeProgressBar.value += value
 
 func update_ProgressBar(value):
+	if($CartridgeProgressBar.value < value):
+		$CPUParticles2D.emitting = true
+		
 	$CartridgeProgressBar.value = value
 	
 func get_ProgressBar_value():
@@ -31,6 +34,9 @@ func start_timer():
 
 func set_texture(item):
 	itemType = item
+	
+	$CPUParticles2D.color = get_score_color(itemType)
+	
 	var texture
 	match itemType:
 		0:
@@ -47,3 +53,19 @@ func set_texture(item):
 			texture = load("res://art/progress_bar/Cartridges/progress_white.png")
 			
 	$CartridgeProgressBar.set_progress_texture(texture)
+
+
+func get_score_color(itemType):
+	match itemType:
+		0:
+			return Color("#000000")
+		1:
+			return Color("#C20000")
+		2:
+			return Color("#2288FF")
+		3:
+			return Color("#05f60a")
+		4:
+			return Color("#f605aa")
+		5: 
+			return Color("#c5c5c5")

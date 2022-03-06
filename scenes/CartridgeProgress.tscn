@@ -20,4 +20,20 @@ fill_mode = 3
 
 [node name="CartridgeTimer" type="Timer" parent="."]
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 9, 12 )
+emitting = false
+amount = 30
+lifetime = 0.5
+one_shot = true
+randomness = 0.28
+lifetime_randomness = 0.04
+emission_shape = 2
+emission_rect_extents = Vector2( 4, 13 )
+gravity = Vector2( 0, 0 )
+radial_accel = 12.85
+scale_amount = 1.5
+
+[node name="Tween" type="Tween" parent="."]
+
 [connection signal="timeout" from="CartridgeTimer" to="." method="_on_CartridgeTimer_timeout"]
