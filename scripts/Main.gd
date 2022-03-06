@@ -55,8 +55,10 @@ func _on_ScoreTimer_timeout():
 	
 	if score_points.size() == 0:
 		game_over()
-			
-	score += score_points.size()
+	
+	for i in score_points:
+		score += i + 1 #score = (itemType + 1)
+	
 	$HUD.update_score(score, score_points)
 
 func _on_StartTimer_timeout():

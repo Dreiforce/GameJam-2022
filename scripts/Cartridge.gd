@@ -20,6 +20,12 @@ func _ready():
 			texture = load("res://art/progress_bar/Cartridges/cartridge_red.png")
 		2:
 			texture = load("res://art/progress_bar/Cartridges/cartridge_blue.png")
+		3:
+			texture = load("res://art/progress_bar/Cartridges/cartridge_green.png")
+		4:
+			texture = load("res://art/progress_bar/Cartridges/cartridge_pink.png")
+		5:
+			texture = load("res://art/progress_bar/Cartridges/cartridge_white.png")
 	
 	$Sprite.set_texture(texture)
 

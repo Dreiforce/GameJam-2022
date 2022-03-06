@@ -39,5 +39,11 @@ func set_texture(item):
 			texture = load("res://art/progress_bar/Cartridges/progress_red.png")
 		2:
 			texture = load("res://art/progress_bar/Cartridges/progress_blue.png")
+		3:
+			texture = load("res://art/progress_bar/Cartridges/progress_green.png")
+		4:
+			texture = load("res://art/progress_bar/Cartridges/progress_pink.png")
+		5:
+			texture = load("res://art/progress_bar/Cartridges/progress_white.png")
 			
 	$CartridgeProgressBar.set_progress_texture(texture)
