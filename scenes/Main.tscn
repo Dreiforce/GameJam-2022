@@ -880,7 +880,7 @@ position = Vector2( 88, 136 )
 texture = ExtResource( 5 )
 
 [node name="CartridgeSpawnTimer" type="Timer" parent="."]
-wait_time = 8.0
+wait_time = 7.0
 
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
 [connection signal="game_over" from="HUD" to="." method="_on_HUD_game_over"]

@@ -3,7 +3,7 @@ extends Node
 export(PackedScene) var cartridge
 export var cartridges = 100
 export var cartridge_multiplier = 10
-export var cartridge_spawn_retries = 5
+export var cartridge_spawn_retries = 8
 var score
 
 var inventory = {}
@@ -31,7 +31,7 @@ func new_game():
 	cartridge_list.clear()
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
-	$HUD.show_message("Fill the printer with ink")
+	$HUD._on_MessageTimer_timeout()
 	$HUD.start_game()
 	generate_cartridges()
 	initialize_printer()
