@@ -48,7 +48,7 @@ func new_game():
 func initialize_printer():
 	var inv_item = $HUD.add_inventory_color(0)
 	inventory[0] = inv_item
-	inventory[0].set_count(1)
+	inventory[0].set_count(10)
 	_on_Printer_fill()
 
 func _on_ScoreTimer_timeout():
