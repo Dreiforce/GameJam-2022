@@ -10,6 +10,7 @@ var inventory = {}
 var printer = {}
 var rng = RandomNumberGenerator.new()
 var cartridge_list = []
+var scores = []
 
 
 # Called when the node enters the scene tree for the first time.
@@ -19,11 +20,14 @@ func _ready():
 	$Player.start($StartPosition.position)
 	$Printer/AnimatedSprite.play()
 	$MenuPausePlayer.play()
+	scores = load_score()
 
 func game_over():
 	$ScoreTimer.stop()
 	$CartridgeSpawnTimer.stop()
 	$HUD.show_game_over()
+	append_score(score)
+	print("scores: " + str(scores))
 
 func new_game():
 	get_tree().paused = false
@@ -44,7 +48,7 @@ func new_game():
 func initialize_printer():
 	var inv_item = $HUD.add_inventory_color(0)
 	inventory[0] = inv_item
-	inventory[0].set_count(10)
+	inventory[0].set_count(1)
 	_on_Printer_fill()
 
 func _on_ScoreTimer_timeout():
@@ -156,7 +160,7 @@ func generate_one_cartridge():
 		print("created cartridge at " + str(x) +  " " + str(y) 
 			+ " with dist% " + str(abstand_home_in_percent) 
 			+ " with rarity " + str(rarity) 
-			+ "and now have " + str(cartridge_list.size()) + " on the map"
+			+ " and now have " + str(cartridge_list.size()) + " on the map"
 		)
 		return true
 	return false
@@ -178,6 +182,32 @@ func check_surroundings(x, y):
 	
 	return true
 
+
+func save_score(scores):
+	var save_game = File.new()
+	save_game.open("user://savegame.save", File.WRITE)
+	save_game.store_line(to_json(scores))
+
+func load_score():
+	var save_game = File.new()
+	if not save_game.file_exists("user://savegame.save"):
+		return [0,0,0] # init
+	save_game.open("user://savegame.save", File.READ)
+	var node_data = parse_json(save_game.get_line())
+	save_game.close()
+	return node_data
+
+func sort_descending(a, b):
+	if a > b:
+		return true
+	return false
+
+func append_score(score):
+	scores.append(score)
+	scores.sort_custom(self, "sort_descending")
+	while(scores.size() > 3):
+		scores.remove(3)
+	save_score(scores)
 
 func add_objects_tp_scene():
 	#TODO remove children for reset $ingame_objects.remove_child()
