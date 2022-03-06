@@ -912,7 +912,7 @@ texture = ExtResource( 5 )
 wait_time = 7.0
 
 [node name="Scoreboard" parent="." instance=ExtResource( 15 )]
-position = Vector2( 55, 213 )
+position = Vector2( 55, 210 )
 script = ExtResource( 20 )
 
 [node name="Label" type="Label" parent="."]
