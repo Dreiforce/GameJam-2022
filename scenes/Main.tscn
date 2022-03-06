@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=2]
+[gd_scene load_steps=128 format=2]
 
 [ext_resource path="res://scenes/Cartridge.tscn" type="PackedScene" id=1]
 [ext_resource path="res://art/lightmap.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://scenes/CollisionBox_2.tscn" type="PackedScene" id=11]
 [ext_resource path="res://art/music/Menue_Pause.ogg" type="AudioStream" id=12]
 [ext_resource path="res://art/music/Soundtrack.ogg" type="AudioStream" id=13]
+[ext_resource path="res://art/music/pickup_sound.wav" type="AudioStream" id=14]
 
 [sub_resource type="OccluderPolygon2D" id=64]
 polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -862,13 +863,19 @@ pause_mode = 2
 position = Vector2( 67, 30 )
 scale = Vector2( 2.5, 2.5 )
 
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 14 )
+volume_db = 20.0
+
 [node name="MenuPausePlayer" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 12 )
+volume_db = -1.0
 
 [node name="MainSoundPlayer" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 13 )
+volume_db = -1.0
 
 [node name="StaticObjects" type="Node" parent="."]
 

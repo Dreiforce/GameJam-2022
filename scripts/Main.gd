@@ -88,6 +88,8 @@ func reset_score():
 	$HUD.update_score(score, [])
 
 func _on_Cartridge_collect(item):	
+	$PickupSound.play()
+	
 	if !inventory.has(item.itemType):
 		var inv_item = $HUD.add_inventory_color(item.itemType)
 		inventory[item.itemType] = inv_item
@@ -195,3 +197,4 @@ func add_objects_tp_scene():
 						y * $TileMap.tile_size
 					)
 					add_child_below_node($ingame_objects,table)
+
