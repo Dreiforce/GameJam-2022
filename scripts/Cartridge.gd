@@ -5,7 +5,6 @@ signal collect
 enum ItemType {
 	BLACK,
 	RED,
-	GREEN,
 	BLUE
 }
 
@@ -20,8 +19,6 @@ func _ready():
 		1:
 			texture = load("res://art/progress_bar/Cartridges/cartridge_red.png")
 		2:
-			texture = load("res://art/progress_bar/Cartridges/cartridge_black.png")
-		3:
 			texture = load("res://art/progress_bar/Cartridges/cartridge_blue.png")
 	
 	$Sprite.set_texture(texture)

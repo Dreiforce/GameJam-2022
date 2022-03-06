@@ -27,8 +27,6 @@ func set_progress(itemType):
 		1:
 			texture = load("res://art/progress_bar/Cartridges/progress_red.png")
 		2:
-			texture = load("res://art/progress_bar/Cartridges/progress_black.png")
-		3:
 			texture = load("res://art/progress_bar/Cartridges/progress_blue.png")
 			
 	$CartridgeProgressBar.set_progress_texture(texture)

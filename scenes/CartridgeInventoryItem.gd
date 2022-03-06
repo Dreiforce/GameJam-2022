@@ -15,8 +15,6 @@ func set_texture(itemType):
 		1:
 			texture = load("res://art/progress_bar/Cartridges/cartridge_red.png")
 		2:
-			texture = load("res://art/progress_bar/Cartridges/cartridge_black.png")
-		3:
 			texture = load("res://art/progress_bar/Cartridges/cartridge_blue.png")
 			
 	$CartridgeSprite.set_texture(texture)

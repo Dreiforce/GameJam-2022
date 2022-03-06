@@ -26,6 +26,7 @@ func _ready():
 
 ##### INSERT GENERATOR HERE
 
+var tile_size = 16
 var seed_value = 100
 var chunk_size = 16
 var world_size = 5
