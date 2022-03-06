@@ -11,6 +11,7 @@ max_value = 100.0
 _data = [ Vector2( 0.0392157, 7.27273 ), 0.0, -92.7272, 0, 0, Vector2( 0.514706, 95.4545 ), 0.0, 0.0, 0, 0 ]
 
 [node name="Cartridge" type="Area2D"]
+pause_mode = 2
 collision_layer = 4
 collision_mask = 0
 script = ExtResource( 2 )
