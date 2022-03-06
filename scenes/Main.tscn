@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=2]
+[gd_scene load_steps=135 format=2]
 
 [ext_resource path="res://scenes/Cartridge.tscn" type="PackedScene" id=1]
 [ext_resource path="res://art/lightmap.png" type="Texture" id=2]
@@ -15,7 +15,11 @@
 [ext_resource path="res://music/Soundtrack.ogg" type="AudioStream" id=13]
 [ext_resource path="res://music/pickup_sound.wav" type="AudioStream" id=14]
 [ext_resource path="res://scenes/Scoreboard.tscn" type="PackedScene" id=15]
-[ext_resource path="res://scenes/Scoreboard.gd" type="Script" id=16]
+[ext_resource path="res://music/gameover.wav" type="AudioStream" id=16]
+[ext_resource path="res://fonts/prstart.ttf" type="DynamicFontData" id=17]
+[ext_resource path="res://fonts/theme.tres" type="Theme" id=18]
+[ext_resource path="res://music/reload.wav" type="AudioStream" id=19]
+[ext_resource path="res://scenes/Scoreboard.gd" type="Script" id=20]
 
 [sub_resource type="OccluderPolygon2D" id=64]
 polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -822,6 +826,11 @@ resource_name = "MainTileset"
 3/shapes = [  ]
 3/z_index = 0
 
+[sub_resource type="DynamicFont" id=114]
+size = 6
+extra_spacing_space = -4
+font_data = ExtResource( 17 )
+
 [node name="Main" type="Node"]
 script = ExtResource( 6 )
 cartridge = ExtResource( 1 )
@@ -872,6 +881,14 @@ scale = Vector2( 2.5, 2.5 )
 stream = ExtResource( 14 )
 volume_db = 20.0
 
+[node name="FillSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 19 )
+volume_db = 20.0
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 16 )
+volume_db = 20.0
+
 [node name="MenuPausePlayer" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 12 )
@@ -896,7 +913,23 @@ wait_time = 7.0
 
 [node name="Scoreboard" parent="." instance=ExtResource( 15 )]
 position = Vector2( 55, 213 )
-script = ExtResource( 16 )
+script = ExtResource( 20 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -167.0
+margin_top = 189.0
+margin_right = -8.0
+margin_bottom = 241.0
+rect_pivot_offset = Vector2( 72, 40 )
+theme = ExtResource( 18 )
+custom_fonts/font = SubResource( 114 )
+text = "Credits:
+
+Jakob Geringer
+Simon Lehner-Dittenberger
+Lukas Wallenböck"
+align = 2
+autowrap = true
 
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
 [connection signal="game_over" from="HUD" to="." method="_on_HUD_game_over"]

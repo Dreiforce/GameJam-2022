@@ -23,6 +23,8 @@ func _ready():
 	scores = load_score()
 
 func game_over():
+	$MainSoundPlayer.stop()
+	$DeathSound.play()
 	$ScoreTimer.stop()
 	$CartridgeSpawnTimer.stop()
 	$HUD.show_game_over()
@@ -103,8 +105,10 @@ func _on_Cartridge_collect(item):
 	inventory[item.itemType].update_count(1)
 
 func _on_Printer_fill():
+	var play_sound = false
 	for itemType in inventory:
 		if inventory[itemType].get_count() > 0:
+			play_sound = true
 			if !printer.has(itemType):
 				printer[itemType] = $HUD.add_printer_color(itemType)
 				printer[itemType].connect("remove_color", self, "_on_ProgressBar_done")
@@ -112,6 +116,8 @@ func _on_Printer_fill():
 				printer[itemType].start_timer()
 				
 			fill_printer(inventory, itemType, printer[itemType])
+	if play_sound:
+		$FillSound.play()
 
 func _on_ProgressBar_done(itemType):
 	printer.erase(itemType)
