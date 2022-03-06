@@ -1,8 +1,8 @@
 <<<<<<< HEAD
-[gd_scene load_steps=130 format=2]
+[gd_scene load_steps=135 format=2]
 =======
-[gd_scene load_steps=134 format=2]
->>>>>>> eaf8d22 (Add gameover, reload sound and credits)
+[gd_scene load_steps=130 format=2]
+>>>>>>> 24e0975 (Add mobile touch support)
 
 [ext_resource path="res://scenes/Cartridge.tscn" type="PackedScene" id=1]
 [ext_resource path="res://art/lightmap.png" type="Texture" id=2]
@@ -20,13 +20,14 @@
 [ext_resource path="res://music/pickup_sound.wav" type="AudioStream" id=14]
 [ext_resource path="res://scenes/Scoreboard.tscn" type="PackedScene" id=15]
 <<<<<<< HEAD
-[ext_resource path="res://scenes/Scoreboard.gd" type="Script" id=16]
-=======
 [ext_resource path="res://music/gameover.wav" type="AudioStream" id=16]
 [ext_resource path="res://fonts/prstart.ttf" type="DynamicFontData" id=17]
 [ext_resource path="res://fonts/theme.tres" type="Theme" id=18]
 [ext_resource path="res://music/reload.wav" type="AudioStream" id=19]
->>>>>>> eaf8d22 (Add gameover, reload sound and credits)
+[ext_resource path="res://scenes/Scoreboard.gd" type="Script" id=20]
+=======
+[ext_resource path="res://scenes/Analog.tscn" type="PackedScene" id=16]
+>>>>>>> 24e0975 (Add mobile touch support)
 
 [sub_resource type="OccluderPolygon2D" id=64]
 polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -861,6 +862,8 @@ __meta__ = {
 
 [node name="HUD" parent="." instance=ExtResource( 3 )]
 
+[node name="Analog" parent="HUD" instance=ExtResource( 16 )]
+
 [node name="PauseScreen" parent="." instance=ExtResource( 7 )]
 
 [node name="StartPosition" type="Position2D" parent="."]
@@ -919,8 +922,8 @@ texture = ExtResource( 5 )
 wait_time = 7.0
 
 [node name="Scoreboard" parent="." instance=ExtResource( 15 )]
-position = Vector2( 55, 213 )
-script = ExtResource( 16 )
+position = Vector2( 55, 210 )
+script = ExtResource( 20 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = -167.0
@@ -942,6 +945,8 @@ autowrap = true
 [connection signal="game_over" from="HUD" to="." method="_on_HUD_game_over"]
 [connection signal="pause_game" from="HUD" to="." method="_on_HUD_pause_game"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="analog_move" from="HUD/Analog" to="Player" method="_on_Analog_analog_move"]
+[connection signal="analog_touch" from="HUD/Analog" to="Player" method="_on_Analog_analog_touch"]
 [connection signal="exit_game" from="PauseScreen" to="." method="_on_PauseScreen_exit_game"]
 [connection signal="resume_game" from="PauseScreen" to="." method="_on_PauseScreen_resume_game"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
