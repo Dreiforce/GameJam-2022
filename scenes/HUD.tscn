@@ -180,6 +180,7 @@ margin_right = 224.0
 margin_bottom = 136.0
 theme = ExtResource( 4 )
 custom_fonts/font = SubResource( 11 )
+shortcut_in_tooltip = false
 shortcut = SubResource( 13 )
 text = "Submit"
 
