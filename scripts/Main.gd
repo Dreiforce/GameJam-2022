@@ -169,7 +169,7 @@ func generate_one_cartridge():
 func check_surroundings(x, y):
 	#if on wall
 	for i in range(-10, 10):
-		for j in range(-15, 15):
+		for j in range(-22, 22):
 			var coordinates = $TileMap.world_to_map(Vector2(x+i, y+j))
 			var tile_index = $TileMap.get_cell(coordinates.x, coordinates.y)
 			if tile_index != 1 or $StartPosition.position == coordinates:

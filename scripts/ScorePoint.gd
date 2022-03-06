@@ -1,19 +1,15 @@
 extends Control
 
-onready var tween = $Tween
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	tween.interpolate_property(
+	$Tween.interpolate_property(
 		$Label, 'rect_scale', 
 		Vector2(0.5,0.5), Vector2(1,1),
 		1,
 		Tween.TRANS_ELASTIC,
 		Tween.EASE_OUT
 	);
-	tween.start()
-	
-	
+	$Tween.start()
 
 func set_color(itemType):
 	$Label.self_modulate = get_score_color(itemType)

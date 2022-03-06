@@ -9,6 +9,7 @@ enum ItemType {
 }
 
 export(ItemType) var itemType = ItemType.BLACK
+onready var tween_values = [0, 3]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,6 +30,7 @@ func _ready():
 			texture = load("res://art/progress_bar/Cartridges/cartridge_white.png")
 	
 	$Sprite.set_texture(texture)
+	_start_tween()
 
 func _on_Cartridge_body_entered(body):
 	emit_signal("collect", self)
@@ -48,5 +50,15 @@ func get_score_color(itemType):
 			return Color("#f605aa")
 		5: 
 			return Color("#c5c5c5")
+			
+func _start_tween():
+	$Tween.interpolate_property(
+		$Sprite, 'position:y', 
+		tween_values[0], tween_values[1], 1,
+		Tween.TRANS_SINE,
+		Tween.EASE_IN_OUT)
+	$Tween.start()
 
-
+func _on_Tween_tween_completed(object, key):
+	tween_values.invert()
+	_start_tween()
