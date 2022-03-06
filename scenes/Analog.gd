@@ -1,7 +1,7 @@
 extends Node2D
 
 var index:int = -1
-export var max_distance:float = 55.0
+export var max_distance:float = 12.0
 
 signal analog_touch(touching)
 signal analog_move(direction)
@@ -37,7 +37,6 @@ func _input(event):
 	# Follow the touch
 	$Outer/Inner.position = (event.position - $Outer.position).clamped(max_distance)
 	
-	print("INNER POS " + str($Outer.position))
 
 
 	# this will set the intensity between 0 and 1

@@ -55,20 +55,18 @@ func start(pos):
 
 func _on_Analog_analog_move(direction):
 	var dir = atan2(direction.y, direction.x)
-	
-	if(direction.x > 0.5):
-		velocity.x = speed
-	if(direction.x < -0.5):
-		velocity.x = -speed
-	if(direction.y > 0.5):
-		velocity.y = speed
-	if(direction.y < -0.5):
-		velocity.y = -speed
-	
-	print(str(direction) + " " + str(velocity))
-	pass # Replace with function body.
+	velocity = snapVec(direction, 8) * speed
 
 
 func _on_Analog_analog_touch(touching):
 	touching_on = touching
-	pass # Replace with function body.
+
+
+func snapVec(vector,increments):
+	 var angle = atan2(vector.y, vector.x);
+	 var direction = ((angle / PI) + 1) * 0.5; 
+	 var snappedDirection = round(direction * increments) / increments; 
+	 snappedDirection = ((snappedDirection * 2) - 1) * PI; 
+	 var snappedVector = Vector2(cos(snappedDirection), sin(snappedDirection));
+	 return vector.length() * snappedVector;
+ 
