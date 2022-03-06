@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Soundtrack.wav-98f284b7d47d2ef74d4c40eaa98cb0fd.sample"
+
+[deps]
+
+source_file="res://art/music/Soundtrack.wav"
+dest_files=[ "res://.import/Soundtrack.wav-98f284b7d47d2ef74d4c40eaa98cb0fd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -14,7 +14,6 @@ func _ready():
 	rng.set_seed(1234)
 	get_tree().paused = true
 	$Player.start($StartPosition.position)
-	generate_colissions()
 
 func game_over():
 	$ScoreTimer.stop()
@@ -78,13 +77,14 @@ func _on_Cartridge_collect(item):
 
 func _on_Printer_fill():
 	for itemType in inventory:
-		if !printer.has(itemType):
-			printer[itemType] = $HUD.add_printer_color(itemType)
-			printer[itemType].connect("remove_color", self, "_on_ProgressBar_done")
-			printer[itemType].update_ProgressBar(0)
-			printer[itemType].start_timer()
-			
-		fill_printer(inventory, itemType, printer[itemType])
+		if inventory[itemType].get_count() > 0:
+			if !printer.has(itemType):
+				printer[itemType] = $HUD.add_printer_color(itemType)
+				printer[itemType].connect("remove_color", self, "_on_ProgressBar_done")
+				printer[itemType].update_ProgressBar(0)
+				printer[itemType].start_timer()
+				
+			fill_printer(inventory, itemType, printer[itemType])
 
 func _on_ProgressBar_done(itemType):
 	printer.erase(itemType)
@@ -126,6 +126,3 @@ func check_surroundings(x, y):
 			if tile_index != 1 or $StartPosition.position == coordinates:
 				return false
 	return true
-
-func generate_colissions():
-	pass
