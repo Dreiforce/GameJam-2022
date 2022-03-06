@@ -195,6 +195,8 @@ func load_score():
 	save_game.open("user://savegame.save", File.READ)
 	var node_data = parse_json(save_game.get_line())
 	save_game.close()
+	
+	$Scoreboard.set_scores(node_data)
 	return node_data
 
 func sort_descending(a, b):
@@ -208,7 +210,8 @@ func append_score(score):
 	while(scores.size() > 3):
 		scores.remove(3)
 	save_score(scores)
-
+	$Scoreboard.set_scores(scores)
+	
 func add_objects_tp_scene():
 	#TODO remove children for reset $ingame_objects.remove_child()
 	var rng = RandomNumberGenerator.new()

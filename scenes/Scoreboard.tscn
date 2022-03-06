@@ -31,9 +31,9 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Score" type="Label" parent="."]
-margin_left = -15.5
+margin_left = -12.8333
 margin_top = -12.0
-margin_right = 34.5
+margin_right = 37.1667
 margin_bottom = -7.0
 rect_pivot_offset = Vector2( 72, 40 )
 theme = ExtResource( 3 )
@@ -42,9 +42,9 @@ text = "No Score"
 autowrap = true
 
 [node name="Score2" type="Label" parent="."]
-margin_left = -15.5
+margin_left = -12.8333
 margin_top = -4.0
-margin_right = 34.5
+margin_right = 37.1667
 margin_bottom = 1.0
 rect_pivot_offset = Vector2( 72, 40 )
 theme = ExtResource( 3 )
@@ -53,9 +53,9 @@ text = "No Score"
 autowrap = true
 
 [node name="Score3" type="Label" parent="."]
-margin_left = -14.6667
+margin_left = -13.3334
 margin_top = 4.0
-margin_right = 35.3333
+margin_right = 36.6666
 margin_bottom = 9.0
 rect_pivot_offset = Vector2( 72, 40 )
 theme = ExtResource( 3 )
@@ -64,9 +64,9 @@ text = "No Score"
 autowrap = true
 
 [node name="Rank" type="Label" parent="."]
-margin_left = -24.6667
+margin_left = -22.0
 margin_top = -12.0
-margin_right = -15.6667
+margin_right = -13.0
 margin_bottom = -7.0
 rect_pivot_offset = Vector2( 72, 40 )
 theme = ExtResource( 3 )
@@ -75,9 +75,9 @@ text = "1."
 autowrap = true
 
 [node name="Rank2" type="Label" parent="."]
-margin_left = -24.6667
+margin_left = -22.0
 margin_top = -4.0
-margin_right = -15.6667
+margin_right = -13.0
 margin_bottom = 1.0
 rect_pivot_offset = Vector2( 72, 40 )
 theme = ExtResource( 3 )
@@ -86,9 +86,9 @@ text = "2."
 autowrap = true
 
 [node name="Rank3" type="Label" parent="."]
-margin_left = -24.0
+margin_left = -22.0
 margin_top = 4.0
-margin_right = -15.0
+margin_right = -13.0
 margin_bottom = 9.0
 rect_pivot_offset = Vector2( 72, 40 )
 theme = ExtResource( 3 )
