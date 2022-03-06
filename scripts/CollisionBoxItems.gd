@@ -17,8 +17,8 @@ func _ready():
 	add_child(sprite)
 	
 func test_position(tilemap,x,y):
-	for xx in range(x,x+5):
-		for yy in range(y,y+3):
-			if(tilemap.get_cell(xx, yy) != tilemap.FLOOR):
+	for i in range(0, 15):
+		for j in range(0, 10):
+			if(tilemap.get_cell(x+i, y+j) != tilemap.FLOOR):
 				return false
 	return true
