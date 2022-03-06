@@ -173,8 +173,8 @@ func generate_one_cartridge():
 
 func check_surroundings(x, y):
 	#if on wall
-	for i in range(0, 10):
-		for j in range(0, 22):
+	for i in range(-10, 10):
+		for j in range(-22, 22):
 			var coordinates = $TileMap.world_to_map(Vector2(x+i, y+j))
 			var tile_index = $TileMap.get_cell(coordinates.x, coordinates.y)
 			if tile_index != 1 or $StartPosition.position == coordinates:
@@ -221,17 +221,17 @@ func add_objects_tp_scene():
 	var rng = RandomNumberGenerator.new()
 	rng.set_seed(1234)
 	
+	
 	for i in range(0, $TileMap.world_size):
 		for j in range(0, $TileMap.world_size):
 			if(i != 0 and j != 0):
-				for k in range(10):
-					var x = rng.randi_range(1,$TileMap.chunk_size-1) + i * $TileMap.chunk_size
-					var y = rng.randi_range(1,$TileMap.chunk_size-1) + j * $TileMap.chunk_size
-					var table = load("res://scripts/CollisionBoxItems.gd").new()
-					if(table.test_position($TileMap,x,y)):
-						table.position = Vector2(
-							x * $TileMap.tile_size,
-							y * $TileMap.tile_size
-						)
-						add_child_below_node($ingame_objects,table)
+				var x = rng.randi_range(1,$TileMap.chunk_size-1) + i * $TileMap.chunk_size
+				var y = rng.randi_range(1,$TileMap.chunk_size-1) + j * $TileMap.chunk_size
+				var table = load("res://scripts/CollisionBoxItems.gd").new()
+				if(table.test_position($TileMap,x,y)):
+					table.position = Vector2(
+						x * $TileMap.tile_size,
+						y * $TileMap.tile_size
+					)
+					add_child_below_node($ingame_objects,table)
 
