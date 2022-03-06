@@ -18,15 +18,15 @@ func generate_matrix(val = 0):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
+	rng.randomize()
+	seed_value = rng.randi_range(0, 100)
 	main()
 	update_dirty_quadrants()
 	update_bitmask_region()
-
+	
 
 ##### INSERT GENERATOR HERE
-
-var seed_value = 100
+var seed_value = 0
 var tile_size = 16
 var chunk_size = 16
 var world_size = 10
