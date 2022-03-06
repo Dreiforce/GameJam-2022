@@ -31,10 +31,10 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Score" type="Label" parent="."]
-margin_left = -12.8333
-margin_top = -12.0
-margin_right = 37.1667
-margin_bottom = -7.0
+margin_left = -16.1666
+margin_top = -11.3333
+margin_right = 33.8334
+margin_bottom = -6.33333
 rect_pivot_offset = Vector2( 72, 40 )
 theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 4 )
@@ -42,10 +42,10 @@ text = "No Score"
 autowrap = true
 
 [node name="Score2" type="Label" parent="."]
-margin_left = -12.8333
-margin_top = -4.0
-margin_right = 37.1667
-margin_bottom = 1.0
+margin_left = -16.1666
+margin_top = -2.66667
+margin_right = 33.8334
+margin_bottom = 2.33333
 rect_pivot_offset = Vector2( 72, 40 )
 theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 4 )
@@ -53,10 +53,10 @@ text = "No Score"
 autowrap = true
 
 [node name="Score3" type="Label" parent="."]
-margin_left = -13.3334
-margin_top = 4.0
-margin_right = 36.6666
-margin_bottom = 9.0
+margin_left = -16.0001
+margin_top = 4.66667
+margin_right = 33.9999
+margin_bottom = 9.66667
 rect_pivot_offset = Vector2( 72, 40 )
 theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 4 )
@@ -64,10 +64,10 @@ text = "No Score"
 autowrap = true
 
 [node name="Rank" type="Label" parent="."]
-margin_left = -22.0
-margin_top = -12.0
-margin_right = -13.0
-margin_bottom = -7.0
+margin_left = -24.0
+margin_top = -11.3333
+margin_right = -15.0
+margin_bottom = -6.33333
 rect_pivot_offset = Vector2( 72, 40 )
 theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 4 )
@@ -75,10 +75,10 @@ text = "1."
 autowrap = true
 
 [node name="Rank2" type="Label" parent="."]
-margin_left = -22.0
-margin_top = -4.0
-margin_right = -13.0
-margin_bottom = 1.0
+margin_left = -24.0
+margin_top = -3.33333
+margin_right = -15.0
+margin_bottom = 1.66667
 rect_pivot_offset = Vector2( 72, 40 )
 theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 4 )
@@ -86,10 +86,10 @@ text = "2."
 autowrap = true
 
 [node name="Rank3" type="Label" parent="."]
-margin_left = -22.0
-margin_top = 4.0
-margin_right = -13.0
-margin_bottom = 9.0
+margin_left = -24.0
+margin_top = 4.66667
+margin_right = -15.0
+margin_bottom = 9.66667
 rect_pivot_offset = Vector2( 72, 40 )
 theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 4 )
