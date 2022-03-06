@@ -144,7 +144,7 @@ func generate_one_cartridge():
 	var y = rng.randi_range(10, size)
 	
 	var abstand_home_in_percent = Vector2(x,y).length() / Vector2(size,size).length() 
-	var rarity = int(clamp(abstand_home_in_percent * 3, 0, 2))
+	var rarity = int(clamp(abstand_home_in_percent * 6, 0, 5))#TODO constants, this distributes the rarity evenly on the board (ie highest only in the outer 1/6 
 	item.itemType = rng.randi_range(0, rarity)
 	
 	if check_surroundings(x, y):

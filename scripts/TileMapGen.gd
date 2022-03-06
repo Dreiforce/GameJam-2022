@@ -29,7 +29,7 @@ func _ready():
 var tile_size = 16
 var seed_value = 100
 var chunk_size = 16
-var world_size = 5
+var world_size = 10
 var WALL = 0
 var FLOOR = 1
 var SHELF = 2
