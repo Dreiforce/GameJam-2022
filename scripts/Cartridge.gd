@@ -12,6 +12,7 @@ export(ItemType) var itemType = ItemType.BLACK
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$CPUParticles2D.color = get_score_color(itemType)
 	var texture
 	match itemType:
 		0:
@@ -32,3 +33,20 @@ func _ready():
 func _on_Cartridge_body_entered(body):
 	emit_signal("collect", self)
 	queue_free()
+	
+func get_score_color(itemType):
+	match itemType:
+		0:
+			return Color("#000000")
+		1:
+			return Color("#C20000")
+		2:
+			return Color("#2288FF")
+		3:
+			return Color("#05f60a")
+		4:
+			return Color("#f605aa")
+		5: 
+			return Color("#c5c5c5")
+
+
