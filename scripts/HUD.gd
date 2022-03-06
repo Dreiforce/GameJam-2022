@@ -7,9 +7,6 @@ signal game_over
 export(PackedScene) var progress_bar
 export(PackedScene) var inventory_item
 
-var printer = {}
-var inventory_list = {}
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Control/PauseButton.hide()
@@ -40,31 +37,18 @@ func show_main_menu():
 func update_score(score):
 	$Control/ScoreLabel.text = str(score)
 	
-func update_inventory(inventory):
-	for item in inventory:	
-		if !inventory_list.has(item):
-			var inv_item = inventory_item.instance()
-			inventory_list[item] = inv_item
-			inv_item.set_texture(item)
-			$Inventory.add_child(inv_item)
-			
-		inventory_list[item].update_count(inventory[item])
+func add_inventory_color(itemType):
+	var inv_item = inventory_item.instance()
+	inv_item.set_texture(itemType)
+	$Inventory.add_child(inv_item)
+	return inv_item
 
-func update_printer(inventory):
-	for item in inventory:
-		if !printer.has(item):
-			var color_bar = progress_bar.instance()
-			printer[item] = color_bar
-			$ProgressBars.add_child(color_bar)
-			color_bar.set_progress(item)
-			color_bar.update_ProgressBar(inventory[item] * 10)
-			color_bar.start_timer()
-		else:
-			printer[item].add_ProgressBar(inventory[item] * 10)
-		
-	print(printer)
-	return printer
-
+func add_printer_color(itemType):
+	var color_bar = progress_bar.instance()
+	color_bar.set_texture(itemType)
+	$ProgressBars.add_child(color_bar)
+	return color_bar
+	
 func _on_StartButton_pressed():
 	$Control/StartButton.hide()
 	emit_signal("start_game")

@@ -15,11 +15,14 @@ func update_ProgressBar(value):
 	
 func get_ProgressBar_value():
 	return $CartridgeProgressBar.value
+	
+func get_ProgressBar_max_value():
+	return $CartridgeProgressBar.get_max()
 
 func start_timer():
 	$CartridgeTimer.start()
 
-func set_progress(itemType):
+func set_texture(itemType):
 	var texture
 	match itemType:
 		0:

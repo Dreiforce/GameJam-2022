@@ -2,6 +2,7 @@ extends Node
 
 export(PackedScene) var cartridge
 export var cartridges = 100
+export var cartridge_multiplier = 10
 var score
 var inventory = {}
 var printer = {}
@@ -29,7 +30,9 @@ func new_game():
 	initialize_printer()
 	
 func initialize_printer():
-	inventory[0] = 10
+	var inv_item = $HUD.add_inventory_color(0)
+	inventory[0] = inv_item
+	inventory[0].set_count(10)
 	_on_Printer_fill()
 
 func _on_ScoreTimer_timeout():
@@ -64,21 +67,32 @@ func reset_score():
 	score = 0
 	$HUD.update_score(score)
 
-func _on_Cartridge_collect(item):
-	print(item.position)
-	if inventory.has(item.itemType):
-		inventory[item.itemType] += 1
-	else:
-		inventory[item.itemType] = 1
-	$HUD.update_inventory(inventory)
-	print("Inventory:", inventory)
+func _on_Cartridge_collect(item):	
+	if !inventory.has(item.itemType):
+		var inv_item = $HUD.add_inventory_color(item.itemType)
+		inventory[item.itemType] = inv_item
+	
+	inventory[item.itemType].update_count(1)
 
 func _on_Printer_fill():
-	printer = $HUD.update_printer(inventory)
-	for item in inventory:
-		inventory[item] = 0
-		
-	$HUD.update_inventory(inventory)
+	for itemType in inventory:
+		if !printer.has(itemType):
+			printer[itemType] = $HUD.add_printer_color(itemType)
+			printer[itemType].update_ProgressBar(0)
+			printer[itemType].start_timer()
+			
+		fill_printer(inventory, itemType, printer[itemType])
+
+func fill_printer(inventory, item, color_bar):
+	var current_progress = color_bar.get_ProgressBar_value()
+	var difference = color_bar.get_ProgressBar_max_value() - current_progress
+	var update_progress = inventory[item].get_count() * cartridge_multiplier
+	if update_progress < difference:
+		color_bar.update_ProgressBar(current_progress + update_progress)
+		inventory[item].update_count(-update_progress / cartridge_multiplier)
+	elif difference > cartridge_multiplier:
+		color_bar.update_ProgressBar(current_progress + difference)
+		inventory[item].update_count(-difference / cartridge_multiplier)
 
 func _on_HUD_game_over():
 	get_tree().reload_current_scene()
@@ -87,7 +101,7 @@ func generate_cartridges():
 	for i in range(cartridges):
 		var item = cartridge.instance()
 		item.connect("collect", self, "_on_Cartridge_collect")
-		item.itemType = rng.randi_range(0, 3)
+		item.itemType = rng.randi_range(0, 2)
 		var size = $TileMap.tile_size * $TileMap.world_size * $TileMap.chunk_size
 		var x = rng.randi_range(10, size)
 		var y = rng.randi_range(10, size)
@@ -100,7 +114,7 @@ func generate_cartridges():
 
 func check_surroundings(x, y):
 	for i in range(-10, 10):
-		for j in range(-10, 10):
+		for j in range(-15, 15):
 			var coordinates = $TileMap.world_to_map(Vector2(x+i, y+j))
 			var tile_index = $TileMap.get_cell(coordinates.x, coordinates.y)
 			if tile_index != 1 or $StartPosition.position == coordinates:

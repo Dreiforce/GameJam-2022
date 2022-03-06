@@ -1,11 +1,24 @@
 extends Control
 
+var count = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+	
+func get_count():
+	return count
 
+func set_count(value):
+	count = value
+	set_text(count)
+	
 func update_count(value):
-	$CartridgeCount.text = str(value)
+	count += value
+	set_text(count)
+	
+func set_text(value):
+	$CartridgeCount.text = str(count)
 
 func set_texture(itemType):
 	var texture
