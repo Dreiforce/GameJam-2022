@@ -26,3 +26,5 @@ theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 1 )
 text = "+1"
 valign = 1
+
+[node name="Tween" type="Tween" parent="."]
