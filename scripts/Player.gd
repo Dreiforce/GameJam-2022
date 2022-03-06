@@ -37,8 +37,14 @@ func move():
 		$AnimatedSprite.animation = "down"
 	elif velocity.y < 0:
 		$AnimatedSprite.animation = "up"
-	else:
-		$AnimatedSprite.animation = "idle"
+		
+		
+	if(velocity.x != 0 or velocity.y != 0):
+		$Light2D.rotation = atan2(velocity.y, velocity.x)
+	
+	
+	
+	
 
 	move_and_slide(velocity, Vector2(0, -1))
 
