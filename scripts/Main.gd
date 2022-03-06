@@ -34,6 +34,7 @@ func initialize_printer():
 	inventory[0] = inv_item
 	inventory[0].set_count(10)
 	_on_Printer_fill()
+	$Printer/AnimatedSprite.play()
 
 func _on_ScoreTimer_timeout():
 	var points = 0

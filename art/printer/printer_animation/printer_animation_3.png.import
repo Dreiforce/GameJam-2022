@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/printer_machine.png-4dc0fddabf3d1f2d1d1f973360bee3ed.stex"
+path="res://.import/printer_animation_3.png-1b28bf8e835c50e60fa026fb31a1e31f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/printer/printer_machine.png"
-dest_files=[ "res://.import/printer_machine.png-4dc0fddabf3d1f2d1d1f973360bee3ed.stex" ]
+source_file="res://art/printer/printer_animation/printer_animation_3.png"
+dest_files=[ "res://.import/printer_animation_3.png-1b28bf8e835c50e60fa026fb31a1e31f.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
