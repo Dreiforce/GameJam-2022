@@ -856,6 +856,7 @@ tile_data = PoolIntArray( -458772, 0, 0, -393236, 0, 65536, -327700, 0, 65536, -
 script = ExtResource( 10 )
 
 [node name="Printer" parent="." instance=ExtResource( 9 )]
+pause_mode = 2
 position = Vector2( 67, 30 )
 scale = Vector2( 2.5, 2.5 )
 

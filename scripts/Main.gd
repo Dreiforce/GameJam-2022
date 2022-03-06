@@ -14,6 +14,7 @@ func _ready():
 	rng.set_seed(1234)
 	get_tree().paused = true
 	$Player.start($StartPosition.position)
+	$Printer/AnimatedSprite.play()
 
 	$MenuPausePlayer.play()
 	
@@ -39,7 +40,6 @@ func initialize_printer():
 	inventory[0] = inv_item
 	inventory[0].set_count(10)
 	_on_Printer_fill()
-	$Printer/AnimatedSprite.play()
 
 func _on_ScoreTimer_timeout():
 	var score_points = []
