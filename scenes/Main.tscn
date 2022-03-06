@@ -11,9 +11,9 @@
 [ext_resource path="res://scenes/Printer.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scripts/TileMapGen.gd" type="Script" id=10]
 [ext_resource path="res://scenes/CollisionBox_2.tscn" type="PackedScene" id=11]
-[ext_resource path="res://art/music/Menue_Pause.ogg" type="AudioStream" id=12]
-[ext_resource path="res://art/music/Soundtrack.ogg" type="AudioStream" id=13]
-[ext_resource path="res://art/music/pickup_sound.wav" type="AudioStream" id=14]
+[ext_resource path="res://music/Menue_Pause.ogg" type="AudioStream" id=12]
+[ext_resource path="res://music/Soundtrack.ogg" type="AudioStream" id=13]
+[ext_resource path="res://music/pickup_sound.wav" type="AudioStream" id=14]
 
 [sub_resource type="OccluderPolygon2D" id=64]
 polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )

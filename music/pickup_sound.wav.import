@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/pickup_sound.wav-10dd602987d8747051b81256a140f93d.sample"
+path="res://.import/pickup_sound.wav-03af5f59a1926d11a5d05906a6381a04.sample"
 
 [deps]
 
-source_file="res://art/music/pickup_sound.wav"
-dest_files=[ "res://.import/pickup_sound.wav-10dd602987d8747051b81256a140f93d.sample" ]
+source_file="res://music/pickup_sound.wav"
+dest_files=[ "res://.import/pickup_sound.wav-03af5f59a1926d11a5d05906a6381a04.sample" ]
 
 [params]
 

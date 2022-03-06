@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Menue_Pause.ogg-e148dd2214a64954d3e9974489ae8e3c.oggstr"
+
+[deps]
+
+source_file="res://music/Menue_Pause.ogg"
+dest_files=[ "res://.import/Menue_Pause.ogg-e148dd2214a64954d3e9974489ae8e3c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
