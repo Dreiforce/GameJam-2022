@@ -880,15 +880,15 @@ pause_mode = 2
 position = Vector2( 67, 30 )
 scale = Vector2( 2.5, 2.5 )
 
-[node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
+[node name="PickupSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
 volume_db = 20.0
 
-[node name="FillSound" type="AudioStreamPlayer2D" parent="."]
+[node name="FillSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
 volume_db = 20.0
 
-[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 16 )
 volume_db = 20.0
 
